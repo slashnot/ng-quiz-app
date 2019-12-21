@@ -1,6 +1,7 @@
 // import { quizListSchema } from './../state-machine/quiz-list-schema';
 import { Component, OnInit, Type } from '@angular/core';
 import { Machine, interpret } from 'xstate'
+import { from } from 'rxjs';
 
 const lightMachine = Machine(
   {
@@ -30,6 +31,10 @@ const lightMachine = Machine(
   }
 );
 
+const service  = interpret(lightMachine, {devTools: true}).onTransition(state => {
+  console.log(state.value);
+}).start()
+
 @Component({
   selector: 'app-quiz-home',
   templateUrl: './quiz-home.component.html',
@@ -41,14 +46,13 @@ export class QuizHomeComponent implements OnInit {
 
   ngOnInit() {
     setInterval(()=>{
-      this.service.send("TIMER")
+      service.send("TIMER")
     }, 3000)
+
+    this.state$.subscribe(state=>{
+      this.context = state.value
+    })
   }
-
+  state$ = from(service);
   context = {}
-  service  = interpret(lightMachine, {devTools: true}).onTransition(state => {
-    console.log(state.value);
-    this.context = state.value
-  }).start()
-
 }
