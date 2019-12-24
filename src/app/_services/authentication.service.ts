@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../_models';
 
 const config = {
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'https://quiz-strapi.herokuapp.com'
 }
 
 @Injectable({ providedIn: 'root' })
@@ -20,11 +20,11 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
-        return this.currentUserSubject.value;
+        return JSON.parse(localStorage.getItem('currentUser'))
     }
 
-    login(username, password) {
-        return this.http.post<any>(`${config.apiUrl}/users/authenticate`, { username, password })
+    login(identifier, password) {
+        return this.http.post<any>(`${config.apiUrl}/auth/local`, { identifier, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));

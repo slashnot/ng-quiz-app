@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../_models';
 
 const config = {
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'https://quiz-strapi.herokuapp.com'
 }
 
 @Injectable({ providedIn: 'root' })
@@ -16,7 +16,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`${config.apiUrl}/users/register`, user);
+        return this.http.post(`${config.apiUrl}/auth/local/register`, user);
     }
 
     delete(id: number) {
