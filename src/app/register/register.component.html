@@ -5,29 +5,33 @@
                 <h2 class="mdl-card__title-text">Register</h2>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label"  for="firstName">First Name</label>
-                <input type="text" formControlName="firstName" class="mdl-textfield__input" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <label class="mdl-textfield__label" for="firstName">First Name</label>
+                <input type="text" formControlName="firstName" class="mdl-textfield__input"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                     <div *ngIf="f.firstName.errors.required">First Name is required</div>
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label"  for="lastName">Last Name</label>
-                <input type="text" formControlName="lastName" class="mdl-textfield__input" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="mdl-textfield__input"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label"  for="username">Username</label>
-                <input type="text" formControlName="username" class="mdl-textfield__input" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <label class="mdl-textfield__label" for="username">Username</label>
+                <input type="text" formControlName="username" class="mdl-textfield__input"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                     <div *ngIf="f.username.errors.required">Username is required</div>
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <label class="mdl-textfield__label"  for="password">Password</label>
-                <input type="password" formControlName="password" class="mdl-textfield__input" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <label class="mdl-textfield__label" for="password">Password</label>
+                <input type="password" formControlName="password" class="mdl-textfield__input"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password is required</div>
                     <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -36,7 +40,8 @@
 
             <div class="register-footer">
                 <a routerLink="/login" class="register mdl-button mdl-js-button">Cancel</a>
-                <button [disabled]="loading" class="register-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button [disabled]="loading"
+                    class="register-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                     <span *ngIf="loading" class="mdl-spinner mdl-js-spinner is-active"></span>
                     Register
                 </button>
